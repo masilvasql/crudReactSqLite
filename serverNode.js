@@ -1,82 +1,33 @@
-
-// var Firebird = require('firebirdsql');
-
-// const http = require('http') // momento da requisição
-// const port = 3000 // porta de entrada
-// const ip = 'localhost' // ip da máquina
-// const database = ''
-
-// const server = http.createServer((req,res)=> {
-//     console.log('Recebendo uma Request')
-//     // res.end('<h1>Aqui fica o que vamos enviar para o navegador como resposta!</h1>')
-//     res.writeHead(200,{'Content-type': 'application/json'});
-//     var objeto ={
-//         nome:'Marcelo',
-//         trabalho:'programador',
-//         idade: 26
-//     }
-//     res.end(JSON.stringify(objeto));
-// });
-
-
-// server.listen(port,ip,()=>{
-//     console.log(`Servirdor rodando em http://${ip}:${port}`)
-//     console.log('Para derrubar o servidor: CTRL + C')
-// })
-
-
-// var Firebird = require('node-firebird');
-// // Options
-// var options = {};
-// options.host = '127.0.0.1';
-// options.port = 3050;
-// options.database = 'SBRSYS.FDB';
-// options.user = 'SYSMTS';
-// options.password = 'mts';
-// // Query
-// Firebird.attach(options, function(err, db) {
-
-//     if (err)
-//         throw err;
-
-//     // db = DATABASE
-//     db.query('SOME QUERY', function(err, result) {
-//         // IMPORTANT: close the connection
-//         db.detach();
-//     });
-
-// });
-
-
+const ip = 'localhost' // ip da máquina
+const express = require('express'); // ok
+const bodyParser = require('body-parser'); // ok 
+const app = express(); // ok
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
 var Firebird = require('node-firebird');
+
 var options = {};
- 
-options.host = '10.1.1.24';
-options.port = 3050;
-options.database = 'SBRSYS.fdb';
-options.user = 'SYSMTS';
-options.password = 'mts';
-options.lowercase_keys = false; // set to true to lowercase keys
-options.role = null;            // default
-options.pageSize = 4096;        // default when creating database
+options.host = 'LOCALHOST';
 
+options.database = 'C:/expo/baseDeDados/SBRSYS.FDB'; // local onde se encontrar o banco
+options.user = 'SYSMTS'; // usuário adm do banco
+options.password = 'mts'; // senha do banco
 
-var pool = Firebird.pool(5, options);
- 
-// Get a free pool
-pool.get(function(err, db) {
- 
-    if (err)
-        throw err;
- 
-    // db = DATABASE
-    db.query('SELECT * FROM TABLE', function(err, result) {
-        // IMPORTANT: release the pool connection
-        db.detach();
+Firebird.attach(options, function(err, db){ // como se fosse o construtor da classe, tudo que tiver aqui dentro, será executado juntamente com os parâmetros de conexão (options)
+    
+    app.get('/adm',function(req, res){ // get, utilizado para fazer um SELECT no banco
+        var jsonRequest = req.body;
+        var jsonRepsonse = {};
+        db.query('SELECT * FROM ADMACESSOESP',function(error,rows){
+            // res.end(JSON.stringify(rows));
+            console.log(rows);
+            jsonRepsonse.result = (rows)
+            res.send(jsonRepsonse);
+        });
     });
+
+})
+
+app.listen(3000, function(){
+    console.log("servidor rodando na porta", 3000);
 });
- 
-// Destroy pool
-pool.destroy();
-
-
