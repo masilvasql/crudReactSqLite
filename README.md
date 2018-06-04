@@ -1,0 +1,2 @@
+"# crudReactSqLite" 
+"gitinit" 
