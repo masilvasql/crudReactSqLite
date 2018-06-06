@@ -2,7 +2,9 @@
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "concurrently": "^3.5.1",
     "expo": "^27.0.1",
     "express": "^4.16.3",
     "firebirdsql": "^0.2.0",
@@ -17,9 +19,12 @@
     "react-native-cardview": "^1.1.5",
     "react-native-circular-action-menu": "^0.5.0",
     "react-native-elements": "^0.19.1",
+    "react-native-rest-client": "^0.1.1",
     "react-native-simple-card-view": "^0.3.0",
     "react-native-vector-icons": "^4.6.0",
     "react-navigation": "^2.0.4",
-    "sqlite": "^2.9.2"
+    "request-json": "^0.6.3",
+    "sqlite": "^2.9.2",
+    "superagent": "^3.8.3"
   }
 }

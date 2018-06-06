@@ -72,8 +72,7 @@ export default class listaClientes extends Component {
               }
           })
       })
-     
-  }
+    }
 
   lerComFiltro(nomeCliente){
     
@@ -139,8 +138,8 @@ export default class listaClientes extends Component {
           searchIcon={{ size: 24 }}
           placeholder='Pesquise aqui...' 
           onChangeText={(nomeCliente) => this.setState({nomeCliente:nomeCliente})}
-        
-          />
+        />
+
         <View >
           <SafeAreaView >
             <FlatList 
@@ -149,8 +148,8 @@ export default class listaClientes extends Component {
               data= {datasource}
               renderItem={this.renderItem}
             >
-            
             </FlatList>
+
           </SafeAreaView>
         </View>
       </ScrollView>

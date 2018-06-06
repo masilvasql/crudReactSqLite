@@ -8,7 +8,8 @@ import listaProdutos from './scenes/telas/listaProdutos';
 import infoCliente from './scenes/telas/infoCliente';
 import infoProduto from './scenes/telas/infoProduto'
 import cadValores from './scenes/telas/cadValores';
-import listaValores from './scenes/telas/listaValores'
+import listaValores from './scenes/telas/listaValores';
+import listaSinc from './scenes/telas/listaSinc'
 
 const App2 = createStackNavigator({
   MenuPrincipal:{screen: MenuPrincipal},
@@ -20,6 +21,7 @@ const App2 = createStackNavigator({
   infoProduto:{screen:infoProduto},
   cadValores:{screen:cadValores},
   listaValores:{screen:listaValores},
+  listaSinc : {screen:listaSinc}
 });
 
 export default App2;

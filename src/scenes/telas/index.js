@@ -1,36 +1,37 @@
 import React, { Component } from 'react'
-
+import RestClient from 'react-native-rest-client';
+import axios from 'axios';
+import { ListItem  } from 'react-native-elements'
 import { 
     Text, 
     View,
     StyleSheet,
-    TouchableOpacity
+    TouchableOpacity,
+    ScrollView,
+    List,
+    FlatList
 } from 'react-native'
-
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class MenuPrincipal extends Component {
-
-    static navigationOptions = {
-        title: 'Menu Principal',
-        headerTintColor: '#ffffff',
-        headerStyle: {
-          backgroundColor: '#34495e',
-          borderBottomColor: '#3498db',
-          borderBottomWidth: 3,
-        },
-        headerTitleStyle: {
-          fontSize: 18,
-        },
-        
-    
-    };
+ static navigationOptions = {
+    title: 'Menu Principal',
+    headerTintColor: '#ffffff',
+    headerStyle: {
+      backgroundColor: '#34495e',
+      borderBottomColor: '#3498db',
+      borderBottomWidth: 3,
+    },
+    headerTitleStyle: {
+      fontSize: 18,
+    },
+  };
 
   render() {
-    
     const {navigate} = this.props.navigation;
 
     return (
+       
       <View style ={styles.alinhamentoIcones}>
       
           <Icon name="cart-plus" style={styles.icones} onPress={()=>{navigate('listaProdutos')}} > 
@@ -41,12 +42,13 @@ export default class MenuPrincipal extends Component {
             <Text style={styles.texto}> Clientes </Text> 
           </Icon> 
 
-          <Icon name="credit-card" style={styles.icones} onPress={()=>{navigate('listaValores')}}> 
-            <Text style={styles.texto}> Preços </Text> 
+          <Icon name="credit-card" style={styles.icones} onPress={()=>{navigate('listaSinc')}}> 
+            <Text style={styles.texto}> Sincro </Text> 
           </Icon> 
 
       </View>
-    )
+
+    )  
   }
 }
 
@@ -67,7 +69,7 @@ styles = StyleSheet.create({
           paddingHorizontal:20,
           flexDirection:'row',
           alignItems:'center',
-          // flexWrap:'wrap',
+          flexWrap:'wrap',
           justifyContent:'space-between',
       },
       texto:{

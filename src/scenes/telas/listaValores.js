@@ -10,10 +10,8 @@ import {
     SafeAreaView,
     TouchableHighlight
 } from 'react-native'
-
 import { Card, ListItem, Button,SearchBar  } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
 import Expo, {SQLite} from 'expo';
 
 const db = SQLite.openDatabase('db.db');
